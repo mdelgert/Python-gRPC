@@ -10,6 +10,7 @@ class Teams(teams_pb2_grpc.TeamsServicer):
     def GetTeam(self, request, context):
         metadata = dict(context.invocation_metadata())
         print(metadata)
+        print("Received:" + request.city)
         teamList = { 'Chicago' : 'Jackals',
                      'Detroit' : 'Wheels',
                      'Minneapolis' : 'Nordics',
@@ -32,6 +33,7 @@ def serve():
     server.add_insecure_port('[::]:50051')
     server.start()
     server.wait_for_termination()
+    print("Server started!")
 
 if __name__ == '__main__':
     logging.basicConfig()
