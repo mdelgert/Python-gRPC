@@ -10,3 +10,9 @@ pip install -r requirements.txt
 # How to Create a Python Requirements File
 https://learnpython.com/blog/python-requirements-file/
 pip freeze > requirements.txt
+
+# Install gRPC.
+sudo python3 -m pip install grpcio
+
+# Install the gRPC tools. This also installs the protocol buffer compiler protoc.
+sudo python3 -m pip install grpcio-tools

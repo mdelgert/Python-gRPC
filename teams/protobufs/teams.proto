@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+// The request message is a string containing the type name.
+message TeamRequest {
+  string city = 1;
+}
+
+// The response message contains the name of the city and the name of the team that plays there.
+message TeamResponse {
+  string city = 1;
+  string nickname = 2;
+}
+// The teams service definition.
+service Teams {
+  // Returns the city and nickname of a team based on a string from the client.
+  rpc GetTeam (TeamRequest) returns (TeamResponse) {}
+}
