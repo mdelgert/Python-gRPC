@@ -12,7 +12,7 @@ class Hellos(hello_pb2_grpc.HellosServicer):
         metadata = dict(context.invocation_metadata())
         print(metadata)
         print("Received:" + request.name)
-        return hello_pb2.HelloResponse(msg=request.name)
+        return hello_pb2.HelloResponse(msg=request.name, name=request.name)
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
