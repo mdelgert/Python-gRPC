@@ -1,5 +1,8 @@
 # Python-gRPC
 https://www.linode.com/docs/guides/using-grpc-for-remote-procedural-calls/
+https://grpc.io/docs/languages/python/quickstart/#generate-grpc-code
+https://github.com/grpc-ecosystem/grpc-gateway#usage
+https://www.linode.com/docs/guides/using-grpc-for-remote-procedural-calls/
 
 # Setup
 virtualenv venv
