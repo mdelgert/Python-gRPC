@@ -19,6 +19,16 @@ class MessagesStub(object):
                 request_serializer=messages__pb2.MessageRequest.SerializeToString,
                 response_deserializer=messages__pb2.MessageResponse.FromString,
                 )
+        self.CreateMessage = channel.unary_unary(
+                '/Messages/CreateMessage',
+                request_serializer=messages__pb2.MessageRequest.SerializeToString,
+                response_deserializer=messages__pb2.MessageResponse.FromString,
+                )
+        self.DeleteMessages = channel.unary_unary(
+                '/Messages/DeleteMessages',
+                request_serializer=messages__pb2.MessageRequest.SerializeToString,
+                response_deserializer=messages__pb2.MessageResponse.FromString,
+                )
 
 
 class MessagesServicer(object):
@@ -30,11 +40,33 @@ class MessagesServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CreateMessage(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteMessages(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_MessagesServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetMessage': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMessage,
+                    request_deserializer=messages__pb2.MessageRequest.FromString,
+                    response_serializer=messages__pb2.MessageResponse.SerializeToString,
+            ),
+            'CreateMessage': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateMessage,
+                    request_deserializer=messages__pb2.MessageRequest.FromString,
+                    response_serializer=messages__pb2.MessageResponse.SerializeToString,
+            ),
+            'DeleteMessages': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteMessages,
                     request_deserializer=messages__pb2.MessageRequest.FromString,
                     response_serializer=messages__pb2.MessageResponse.SerializeToString,
             ),
@@ -60,6 +92,40 @@ class Messages(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Messages/GetMessage',
+            messages__pb2.MessageRequest.SerializeToString,
+            messages__pb2.MessageResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CreateMessage(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/Messages/CreateMessage',
+            messages__pb2.MessageRequest.SerializeToString,
+            messages__pb2.MessageResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteMessages(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/Messages/DeleteMessages',
             messages__pb2.MessageRequest.SerializeToString,
             messages__pb2.MessageResponse.FromString,
             options, channel_credentials,

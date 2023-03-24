@@ -11,4 +11,6 @@ message MessageResponse {
 
 service Messages {
   rpc GetMessage (MessageRequest) returns (MessageResponse) {}
+  rpc CreateMessage (MessageRequest) returns (MessageResponse) {}
+  rpc DeleteMessages (MessageRequest) returns (MessageResponse) {}
 }
