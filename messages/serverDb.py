@@ -6,7 +6,7 @@
 
 import sqlite3
 
-def deleteMessages():
+def deleteMessages():                                        
     conn = sqlite3.connect("messages.db")
     cursor = conn.cursor()
     sql = "DELETE FROM messages;"
